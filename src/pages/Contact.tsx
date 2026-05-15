@@ -55,19 +55,19 @@ const Contact = () => {
           </div>
 
           <div className="bg-secondary border border-border rounded-md p-6 space-y-4">
-            <a href="mailto:hello@leadflowagency.com" className="flex items-start gap-3 text-sm hover:text-accent-brand transition-smooth">
+            <a href="mailto:hello@leadflowsolutions.uk" className="flex items-start gap-3 text-sm hover:text-accent-brand transition-smooth">
               <Mail className="h-4 w-4 mt-0.5 text-accent-brand" />
               <div>
                 <div className="font-semibold">Email</div>
-                <div className="text-muted-foreground">hello@leadflowagency.com</div>
+                <div className="text-muted-foreground">hello@leadflowsolutions.uk</div>
               </div>
             </a>
             <a href="tel:+18005551234" className="flex items-start gap-3 text-sm hover:text-accent-brand transition-smooth">
               <Phone className="h-4 w-4 mt-0.5 text-accent-brand" />
               <div>
                 <div className="font-semibold">Phone</div>
-                <div className="text-muted-foreground">US +1 (800) 555-1234</div>
-                <div className="text-muted-foreground">UK +44 20 4525 1234</div>
+                <div className="text-muted-foreground">US -</div>
+                <div className="text-muted-foreground">UK +44 7727 414666</div>
               </div>
             </a>
             <div className="flex items-start gap-3 text-sm">

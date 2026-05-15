@@ -15,7 +15,7 @@ const About = () => (
     <PageHeader
       eyebrow="About"
       title={<>We build lead systems for the people who <em className="not-italic text-accent-brand">actually do the work.</em></>}
-      desc="LeadFlow Agency is a small, focused team that does one thing: install and run automated lead-flow systems on GoHighLevel for trade and home service businesses across the US and UK."
+      desc="LeadFlow Solutions is a small, focused team that does one thing: install and run automated lead-flow systems on GoHighLevel for trade and home service businesses across the US and UK."
     />
 
     <section className="container py-20 grid lg:grid-cols-2 gap-12 items-start">

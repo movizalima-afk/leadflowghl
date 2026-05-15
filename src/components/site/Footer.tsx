@@ -12,11 +12,11 @@ export const Footer = () => (
           and landscapers across the US & UK. More booked jobs, zero missed calls.
         </p>
         <div className="space-y-2 text-sm text-background/70 pt-2">
-          <a href="mailto:hello@leadflowagency.com" className="flex items-center gap-2 hover:text-accent-brand transition-smooth">
-            <Mail className="h-4 w-4" /> hello@leadflowagency.com
+          <a href="mailto:hello@leadflowsolutions.uk" className="flex items-center gap-2 hover:text-accent-brand transition-smooth">
+            <Mail className="h-4 w-4" /> hello@leadflowsolutions.uk
           </a>
           <a href="tel:+18005551234" className="flex items-center gap-2 hover:text-accent-brand transition-smooth">
-            <Phone className="h-4 w-4" /> +1 (800) 555-1234 · UK +44 20 4525 1234
+            <Phone className="h-4 w-4" /> - · UK +44 7727 414666
           </a>
           <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Remote · US & UK</div>
         </div>
@@ -44,7 +44,7 @@ export const Footer = () => (
     </div>
     <div className="border-t border-background/10">
       <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-background/50 font-mono-label tracking-wider">
-        <span>© {new Date().getFullYear()} LEADFLOW AGENCY · ALL RIGHTS RESERVED</span>
+        <span>© {new Date().getFullYear()} LeadFlow Solutions · ALL RIGHTS RESERVED</span>
         <span>BUILT FOR HOME SERVICE PROS · US & UK</span>
       </div>
     </div>
