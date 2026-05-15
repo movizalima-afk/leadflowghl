@@ -11,19 +11,67 @@ import { Mail, Phone, Calendar, Check, ShieldCheck, Clock } from "lucide-react";
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
+  const [name, setName] = useState("");
+  const [business, setBusiness] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [trade, setTrade] = useState("");
+  const [country, setCountry] = useState("");
+  const [message, setMessage] = useState("");
   const [done, setDone] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setDone(true);
-      toast({
-        title: "Request received!",
-        description: "We'll email you within 1 business hour to confirm your call.",
-      });
-    }, 800);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setSubmitting(true);
+
+  try {
+    const response = await fetch("https://services.leadconnectorhq.com/hooks/WfhR4diynaKyHLE9j3jv/webhook-trigger/1906fc05-dc1e-462a-9dca-b7482be77e19", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        business,
+        email,
+        phone,
+        trade,
+        country,
+        message,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to submit form");
+    }
+
+    setDone(true);
+
+    toast({
+      title: "Request received!",
+      description: "We'll contact you shortly.",
+    });
+
+    // Reset form
+    setName("");
+    setBusiness("");
+    setEmail("");
+    setPhone("");
+    setTrade("");
+    setCountry("");
+    setMessage("");
+
+  } catch (error) {
+    toast({
+      title: "Something went wrong",
+      description: "Please try again.",
+      variant: "destructive",
+    });
+  } finally {
+    setSubmitting(false);
+  }
+};
   };
 
   return (
@@ -110,27 +158,27 @@ const Contact = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full name *</Label>
-                  <Input id="name" required placeholder="John Smith" />
+                  <Input id="name" required placeholder="John Smith" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="business">Business name *</Label>
-                  <Input id="business" required placeholder="Smith Plumbing Co." />
+                  <Input id="business" required placeholder="Smith Plumbing Co." value={business} onChange={(e) => setBusiness(e.target.value)} />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
-                  <Input id="email" type="email" required placeholder="you@business.com" />
+                  <Input id="email" type="email" required placeholder="you@business.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone *</Label>
-                  <Input id="phone" type="tel" required placeholder="+1 555 000 0000" />
+                  <Input id="phone" type="tel" required placeholder="+1 555 000 0000" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Trade *</Label>
-                  <Select required>
+                  <Select value={trade} onValueChange={setTrade} required>
                     <SelectTrigger><SelectValue placeholder="Select trade" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="plumber">Plumber</SelectItem>
@@ -144,7 +192,7 @@ const Contact = () => {
                 </div>
                 <div className="space-y-2">
                   <Label>Country *</Label>
-                  <Select required>
+                  <Select value={country} onValueChange={setCountry} required>
                     <SelectTrigger><SelectValue placeholder="Select country" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="us">United States</SelectItem>
@@ -157,7 +205,7 @@ const Contact = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">What's your biggest lead-flow problem right now?</Label>
-                <Textarea id="message" rows={4} placeholder="e.g. We miss too many calls in the field, or our reviews are stuck at 12…" />
+                <Textarea id="message" rows={4} placeholder="e.g. We miss too many calls in the field, or our reviews are stuck at 12…" value={message} onChange={(e) => setMessage(e.target.value)} />
               </div>
               <Button type="submit" variant="hero" size="xl" className="w-full" disabled={submitting}>
                 {submitting ? "Sending…" : "Book My Free Call"}
