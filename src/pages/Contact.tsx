@@ -26,7 +26,7 @@ const Contact = () => {
   setSubmitting(true);
 
   try {
-    const response = await fetch("https://services.leadconnectorhq.com/hooks/WfhR4diynaKyHLE9j3jv/webhook-trigger/1906fc05-dc1e-462a-9dca-b7482be77e19", {
+    const response = await fetch("https://services.leadconnectorhq.com/hooks/WfhR4diynaKyHLE9j3jv/webhook-trigger/a9bdb3e3-7a9c-4195-89ca-59e1b2a8b643", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const Contact = () => {
   } finally {
     setSubmitting(false);
   }
-};
+
   };
 
   return (
